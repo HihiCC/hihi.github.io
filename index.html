@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入主页样式 -->
+    <link rel="stylesheet" href="index.css">
+    <!-- 引入公共样式 -->
+    <link rel="stylesheet" href="public.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="sav">
+        <div class="w">
+            <p>WM</p>
+            <span>退出</span>
+            <input type="submit" value="关灯" id="gd">
+        </div>
+        <!-- 下拉菜单 -->
+        <div class="btbox">
+            <div class="bt_5">×</div>
+            <div class="bt">
+                <img src="image/1.0.jpg" alt="" id="anr">
+                <img src="image/2.0.jpg" alt="" id="anr">
+                <img src="image/3.0.jpg" alt="" id="anr">
+                <img src="image/4.0.jpg" alt="" id="anr">
+            </div>
+
+        </div>
+    </div>
+    <!-- 头像 -->
+    <div class="Head_image w">
+        <img src="image/17134.jpg" alt="">
+
+    </div>
+    <!-- 反转 -->
+    <div class="fangzhuang">
+        <div class="div1"></div>
+        <div class="div2"></div>
+    </div>
+    <!-- 留言栏 -->
+    <textarea name="留言栏" id="ly" cols="30" rows="10"></textarea>
+    <input type="submit" value="保存" id="ly_an">
+    <ul id="ly_ul">
+
+    </ul>
+    <script>
+        // 关灯
+        var ipt = document.getElementById('gd');
+        var ht = document.documentElement;
+        var by = document.body;
+        ipt.onclick = function() {
+            if (ipt.value === '关灯') {
+                ht.style.backgroundColor = 'black';
+                by.style.backgroundColor = 'black';
+                ipt.value = '开灯';
+            } else {
+                ht.style.backgroundColor = 'white';
+                by.style.backgroundColor = 'white';
+                ipt.value = '关灯';
+            }
+        }
+        var bt_5 = document.querySelector('.bt_5');
+        var bt = document.querySelector('.bt');
+        bt_5.onclick = function() {
+            if (bt_5.innerHTML === '×') {
+                bt.style.display = 'block';
+                bt_5.innerHTML = '✔';
+            } else {
+                bt.style.display = 'none';
+                bt_5.innerHTML = '×';
+            }
+        }
+        var anr = document.querySelectorAll('#anr')
+        for (i = 0; i < anr.length; i++) {
+            anr[i].onclick = function() {
+                by.style.backgroundImage = 'url(' + this.src + ')'
+                console.log(this.style.backgroundImage);
+            }
+        }
+        console.log(anr);
+        // 留言栏
+        var ly = document.getElementById('ly');
+        var ly_an = document.getElementById('ly_an');
+        var ly_ul = document.getElementById('ly_ul');
+
+        ly_an.onclick = function() {
+            var ly_li = document.createElement('li');
+            ly_ul.appendChild(ly_li);
+            ly_li.innerHTML = ly.value;
+        }
+        console.log(ly.innerHTML);
+    </script>
+</body>
+
+</html>
